@@ -17,11 +17,23 @@
 
 #include <assert.h>
 #define containerof(p, type, member) ((type *)((char *)(p) - offsetof(type, member)))
+#ifndef cold
+	#define cold (__attribute__((__cold__)))
+#endif
+#ifndef hot
+	#define hot (__attribute__((__hot__)))
+#endif
+#ifndef CONST
+	#define CONST (__attribute__((__const__)))
+#endif
 #ifndef pure
 	#define pure (__attribute__((__pure__)))
 #endif
 #ifndef unused
 	#define unused (__attribute__((__unused__)))
+#endif
+#ifndef used
+	#define used (__attribute__((__used__)))
 #endif
 
 #ifdef __STDC_NO_ATOMICS__
